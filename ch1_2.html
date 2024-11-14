@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css"/>
+    <title>Math Operation - Chapter 1</title>
+    <style>
+  p {
+    text-align: justify;
+  }
+  
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #1e1e2d; 
+            color: #e0e0e0;
+        }
+
+        .title { 
+            font-size: 24px; 
+            font-weight: bold; 
+            color: #ffffff; 
+        }
+        
+        .chapter { 
+            font-size: 48px; 
+            font-weight: bold; 
+            float: right; 
+            color: #ffffff; 
+        }
+
+        .content { 
+            font-size: 18px; 
+            margin-top: 20px; 
+            color: #ffffff; 
+            background-color: #2b2b3a; 
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .example, .exercise { 
+            background-color: #2e3b55; 
+            color: #ffffff; 
+            padding: 20px; 
+            margin-top: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); 
+            font-family: monospace;
+            transition: transform 0.3s ease; 
+        }
+
+        .example:hover, .exercise:hover {
+            transform: scale(0.98); 
+        }
+
+        .output { 
+            color: #00ff00; 
+            display: block; 
+        }
+
+        .interactive { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            margin-top: 10px; 
+        }
+
+        .interactive label { 
+            display: block; 
+            font-size: 18px; 
+            margin-bottom: 5px;
+        }
+
+        .interactive input { 
+            padding: 8px; 
+            font-size: 16px; 
+            width: 100%; 
+            max-width: 80px; 
+            border-radius: 5px; 
+            border: none; 
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .interactive button { 
+            padding: 12px 25px; 
+            font-size: 16px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.3s ease; 
+            margin-top: 10px;
+        }
+
+        .interactive button:hover { 
+            background-color: #45a049; 
+        }
+
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0, 0, 0, 0.7); 
+            justify-content: center; 
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #ffffff; 
+            padding: 30px; 
+            border-radius: 10px; 
+            max-width: 400px; 
+            width: 90%; 
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            color: #333;
+        }
+
+        .modal .correct { color: #4CAF50; }
+        .modal .incorrect { color: #ff6347; }
+        .modal .pass { color: #4CAF50; font-weight: bold; }
+        .modal .fail { color: #ff6347; font-weight: bold; }
+
+        .modal button {
+            padding: 10px 20px; 
+            margin-top: 15px; 
+            font-size: 16px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+
+        .modal button:hover {
+            background-color: #45a049;
+        }
+
+        .modal a button {
+            text-decoration: none; 
+            color: inherit;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="title">Math Operation</div>
+    <div class="chapter">CHAPTER 1</div>
+
+    <div class="content">
+        <h3>1.2 Subtraction</h3>
+        <p>The subtraction operator, <code>-</code>, performs subtraction on numbers.</p>
+    </div>
+
+    <div class="example">
+        <strong>Example 1.2</strong><br>
+        <div>&gt;&gt;&gt; 4 - 2 <span class="output">2</span></div>
+        <div>&gt;&gt;&gt; 6 - 4 <span class="output">2</span></div>
+        <div>&gt;&gt;&gt; 47 - 8 <span class="output">39</span></div>
+    </div>
+
+    <div class="content">
+        <h3>Exercise 1.2</h3>
+        <p>Fill in the blank spaces</p>
+    </div>
+
+    <div class="exercise">
+        <div class="interactive">
+            <label>&gt;&gt;&gt; 12 - 2</label>
+            <input type="text" id="answer1" placeholder="Answer">
+
+            <label>&gt;&gt;&gt; 8 - 4</label>
+            <input type="text" id="answer2" placeholder="Answer">
+
+            <label>&gt;&gt;&gt; 12 - 8</label>
+            <input type="text" id="answer3" placeholder="Answer">
+
+            <button onclick="checkAnswers()">Check Answers</button>
+        </div>
+    </div>
+
+    <!-- Modal for feedback -->
+    <div id="modal" class="modal">
+        <div class="modal-content" id="modal-content">
+            <!-- Feedback content will be generated dynamically -->
+        </div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const answer1 = document.getElementById("answer1").value;
+            const answer2 = document.getElementById("answer2").value;
+            const answer3 = document.getElementById("answer3").value;
+
+            let score = 0;
+            let feedback = "<h3>Exercise Feedback</h3><hr>";
+
+            feedback += `<p>&gt;&gt;&gt; 12 - 2<br> ${answer1} <span class="${answer1 == 10 ? 'correct' : 'incorrect'}">${answer1 == 10 ? "Correct" : "Incorrect, Correct answer: 10"}</span></p>`;
+            if (answer1 == 10) score++;
+
+            feedback += `<p>&gt;&gt;&gt; 8 - 4<br> ${answer2} <span class="${answer2 == 4 ? 'correct' : 'incorrect'}">${answer2 == 4 ? "Correct" : "Incorrect, Correct answer: 4"}</span></p>`;
+            if (answer2 == 4) score++;
+
+            feedback += `<p>&gt;&gt;&gt; 12 - 8<br> ${answer3} <span class="${answer3 == 4 ? 'correct' : 'incorrect'}">${answer3 == 4 ? "Correct" : "Incorrect, Correct answer: 4"}</span></p>`;
+            if (answer3 == 4) score++;
+
+            feedback += `<p><strong>Total Score: ${score}/3</strong></p>`;
+
+            if (score >= 2) {
+                feedback += `<p class="pass">Congratulations, you passed!</p>`;
+                feedback += `<a href="ch1_3.html"><button>Next Lesson</button></a>`;
+            } else {
+                feedback += `<p class="fail">You did not pass. Study again to improve your understanding.</p>`;
+                feedback += `<button onclick="location.reload()">Study Again</button>`;
+            }
+
+            document.getElementById("modal-content").innerHTML = feedback;
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("modal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
