@@ -3,241 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css"/>
-  <title>Math Operation - Chapter 1</title>
+    <title>Catch Them Young: Learn Python Programming</title>
     <style>
-  p {
+        /* Styling for dark theme */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #f0f0f0;
+            background-color: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header, footer {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+          background-color: #2a2a2a;
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+        }
+        main {
+            flex-grow: 1;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ffcc00;
+            margin: 0;
+        }
+        p {
+            font-size: 1.2em;
+            color: #d0d0d0;
+            max-width: 600px;
+            margin: 20px auto;
+         
+        }
+  main > p {
     text-align: justify;
+    line-height: 1.5;
   }
-        /* Darker background for the body */
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 20px; 
-            background-color: #1e1e2d; 
-            color: #e0e0e0;
+        .cta-button {
+            background-color: #ff8800;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
+        .cta-button:hover {
+            background-color: #ff6600;
+        }
+        footer {
+            font-size: 0.9em;
+            color: #a0a0a0;
+          background-color: #2a2a2a;
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+        }
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+  small {
+    font-style: italic;
+  }
+  
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ffc107, transparent);
+    margin: 30px auto;
+    width: 60%;
+    border-radius: 5px;
+}
 
-        .title { 
-            font-size: 24px; 
-            font-weight: bold; 
-            color: #ffffff; 
-        }
-        
-        .chapter { 
-            font-size: 48px; 
-            font-weight: bold; 
-            float: right; 
-            color: #ffffff; 
-        }
-
-        .content { 
-            font-size: 18px; 
-            margin-top: 20px; 
-            color: #ffffff; 
-            background-color: #2b2b3a; /* Slightly lighter than the body */
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        /* Styling for Python shell look */
-        .example, .exercise { 
-            background-color: #2e3b55; 
-            color: #ffffff; 
-            padding: 20px; 
-            margin-top: 20px; 
-            border-radius: 8px; 
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); 
-            font-family: monospace;
-            transition: transform 0.3s ease; /* Smooth zoom-out transition */
-        }
-
-        .example:hover, .exercise:hover {
-            transform: scale(0.98); /* Zoom-out effect on hover */
-        }
-
-        .output { 
-            color: #00ff00; 
-            display: block; 
-        }
-
-        /* Interactive exercise styling */
-        .interactive { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; 
-            margin-top: 10px; 
-        }
-
-        .interactive label { 
-            display: block; 
-            font-size: 18px; 
-            margin-bottom: 5px;
-        }
-
-        .interactive input { 
-            padding: 8px; 
-            font-size: 16px; 
-            width: 100%; 
-            max-width: 80px; 
-            border-radius: 5px; 
-            border: none; 
-            text-align: center;
-            margin-top: 5px;
-        }
-
-        /* Button styling */
-        .interactive button { 
-            padding: 12px 25px; 
-            font-size: 16px; 
-            background-color: #4CAF50; 
-            color: white; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            transition: background-color 0.3s ease; 
-            margin-top: 10px;
-        }
-
-        .interactive button:hover { 
-            background-color: #45a049; 
-        }
-
-        /* Modal styling */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0; top: 0; width: 100%; height: 100%; 
-            background-color: rgba(0, 0, 0, 0.7); 
-            justify-content: center; 
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: #ffffff; 
-            padding: 30px; 
-            border-radius: 10px; 
-            max-width: 400px; 
-            width: 90%; 
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            color: #333;
-        }
-
-        .modal .correct { color: #4CAF50; } /* Green for correct */
-        .modal .incorrect { color: #ff6347; } /* Red for incorrect */
-        .modal .pass { color: #4CAF50; font-weight: bold; } /* Green for pass message */
-        .modal .fail { color: #ff6347; font-weight: bold; } /* Red for fail message */
-
-        .modal button {
-            padding: 10px 20px; 
-            margin-top: 15px; 
-            font-size: 16px; 
-            background-color: #4CAF50; 
-            color: white; 
-            border: none; 
-            border-radius: 5px; 
-            cursor: pointer; 
-        }
-
-        .modal button:hover {
-            background-color: #45a049;
-        }
-
-        .modal a button {
-            text-decoration: none; 
-            color: inherit;
-        }
+  main {
+    background-color: #2a2a2a;
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
 
     </style>
 </head>
 <body>
 
-    <div class="title">Math Operation</div>
-    <div class="chapter">CHAPTER 1</div>
+<header>
+  <hr>
+    <h1>Catch Them Young: Computer Programming Using Python</h1>
+  <hr>
+    <p>by I. Y Maina</p>
+</header>
 
-    <div class="content">
-        <p>Math operators are used to perform addition, subtraction, multiplication, exponentiation, division, integer division, and modulo operations.</p>
+<main>
+  <hr>
+    <p>Welcome to the interactive web version of <em>Catch Them Young</em> – a fun, engaging way for children to actively learn computer programming!</p>
+      <p>With each section of a chapter of the book, children learn and practice real coding skills through game-like coding exercises and activities.</p>
+    
+  <p>Want to give it a try? Click below to explore the demo!</p>
+    <button class="cta-button" onclick="location.href='../ch1/index.html'">Try the Demo</button>
+  <hr>
+  <small>&lt;/>...for the future of children</small>
+</main>
 
-        <h3>1.1 Addition</h3>
-        <p>Just like in math class, the plus, <code>+</code>, operator is used to perform addition on numbers in programming.</p>
-    </div>
-
-    <div class="example">
-        <strong>Example 1.1</strong><br>
-        <div>&gt;&gt;&gt; 1 + 1 <span class="output">2</span></div>
-        <div>&gt;&gt;&gt; 3 + 2 <span class="output">5</span></div>
-        <div>&gt;&gt;&gt; 6 + 5 <span class="output">11</span></div>
-    </div>
-
-    <div class="content">
-        <h3>Exercise 1.1</h3>
-        <p>Fill in the blank spaces</p>
-    </div>
-
-    <div class="exercise">
-        <div class="interactive">
-            <label>&gt;&gt;&gt; 2 + 4</label>
-            <input type="text" id="answer1" placeholder="Answer">
-
-            <label>&gt;&gt;&gt; 3 + 4</label>
-            <input type="text" id="answer2" placeholder="Answer">
-
-            <label>&gt;&gt;&gt; 2 + 9</label>
-            <input type="text" id="answer3" placeholder="Answer">
-
-            <button onclick="checkAnswers()">Check Answers</button>
-        </div>
-    </div>
-
-    <!-- Modal for feedback -->
-    <div id="modal" class="modal">
-        <div class="modal-content" id="modal-content">
-            <!-- Feedback content will be generated dynamically -->
-        </div>
-    </div>
-
-    <script>
-        function checkAnswers() {
-            const answer1 = document.getElementById("answer1").value;
-            const answer2 = document.getElementById("answer2").value;
-            const answer3 = document.getElementById("answer3").value;
-
-            let score = 0;
-            let feedback = "<h3>Exercise Feedback</h3><hr>";
-
-            feedback += `<p>&gt;&gt;&gt; 2 + 4<br> ${answer1} <span class="${answer1 == 6 ? 'correct' : 'incorrect'}">${answer1 == 6 ? "Correct" : "Incorrect, Correct answer: 6"}</span></p>`;
-            if (answer1 == 6) score++;
-
-            feedback += `<p>&gt;&gt;&gt; 3 + 4<br> ${answer2} <span class="${answer2 == 7 ? 'correct' : 'incorrect'}">${answer2 == 7 ? "Correct" : "Incorrect, Correct answer: 7"}</span></p>`;
-            if (answer2 == 7) score++;
-
-            feedback += `<p>&gt;&gt;&gt; 2 + 9<br> ${answer3} <span class="${answer3 == 11 ? 'correct' : 'incorrect'}">${answer3 == 11 ? "Correct" : "Incorrect, Correct answer: 11"}</span></p>`;
-            if (answer3 == 11) score++;
-
-            feedback += `<p><strong>Total Score: ${score}/3</strong></p>`;
-
-            if (score >= 2) {
-                feedback += `<p class="pass">Congratulations, you passed!</p>`;
-                feedback += `<a href="ch1_2.html"><button>Next Lesson</button></a>`;
-            } else {
-                feedback += `<p class="fail">You did not pass. Study again to improve your understanding.</p>`;
-                feedback += `<button onclick="location.reload()">Study Again</button>`;
-            }
-
-            // Display the feedback in a modal
-            document.getElementById("modal-content").innerHTML = feedback;
-            document.getElementById("modal").style.display = "flex";
-        }
-
-        // Close the modal when clicking outside of the modal content
-        window.onclick = function(event) {
-            const modal = document.getElementById("modal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+<footer>
+    <p>For inquiries, contact me at:</p>
+    <p>Email: <a href="mailto:yusufmainaishaku@gmail.com">yusufmainaishaku@gmail.com</a> | WhatsApp: <a href="https://wa.me/2349045060362">09045060362</a></p>
+</footer>
 
 </body>
 </html>
