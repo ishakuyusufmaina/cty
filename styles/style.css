@@ -24,3 +24,15 @@ code {
   line-height: 1.4;
   font-weight: bold;
 }
+
+body{
+    border-left: 2px solid #ffc107;
+}
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ffc107, transparent);
+    margin: 30px auto;
+    width: 60%;
+    border-radius: 5px;
+}
