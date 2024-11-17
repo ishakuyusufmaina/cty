@@ -1,3 +1,10 @@
+let a = document.querySector('a[href="index.html"]');
+if (!a) {
+    a = document.createElement("a");
+    a.href="index.html";
+    a.innerHTML = '<i class="fas fa-home"></i></a>';
+    document.body.prepend(a);
+}
 function finalizeExercise(exerciseElement) {
     // Remove the "Check Answers" button
     const checkAnswerButton = exerciseElement.querySelector("button");
