@@ -2,7 +2,7 @@ let a = document.querySector('a[href="index.html"]');
 if (!a) {
     a = document.createElement("a");
     a.href="index.html";
-    a.innerHTML = '<i class="fas fa-home"></i></a>';
+    a.innerHTML = '<i class="fas fa-home"></i>';
     document.body.prepend(a);
 }
 function finalizeExercise(exerciseElement) {
