@@ -1,3 +1,4 @@
+alert();
 let a = document.querySelector('a[href="index.html"]');
 if (!a) {
     a = document.createElement("a");
