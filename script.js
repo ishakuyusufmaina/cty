@@ -4,6 +4,7 @@ if (!a) {
     a.setAttribute("href", "index.html");
     a.innerHTML = '<i class="fas fa-home"></i>';
     document.body.prepend(a);
+    alert(a);
     
 }
 function finalizeExercise(exerciseElement) {
